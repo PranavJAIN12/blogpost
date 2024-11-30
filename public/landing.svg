@@ -1,0 +1,54 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 600 400"
+  fill="none"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+>
+  <!-- Background -->
+  <rect width="600" height="400" fill="black" />
+
+  <!-- Laptop -->
+  <rect x="150" y="100" width="300" height="200" rx="12" fill="white" />
+  <rect x="160" y="110" width="280" height="180" rx="10" fill="black" />
+  <line x1="160" y1="260" x2="440" y2="260" stroke="white" stroke-width="3" />
+  <rect x="200" y="135" width="200" height="90" rx="5" fill="white" />
+  <text
+    x="210"
+    y="165"
+    font-family="Arial, sans-serif"
+    font-size="14"
+    fill="black"
+  >
+    "Explore engaging blogs"
+  </text>
+  <rect x="210" y="180" width="180" height="25" rx="5" fill="black" />
+  <text
+    x="220"
+    y="197"
+    font-family="Arial, sans-serif"
+    font-size="12"
+    fill="white"
+  >
+    "Read, Learn, Grow"
+  </text>
+
+  <!-- Bookshelf -->
+  <rect x="60" y="80" width="40" height="240" fill="white" />
+  <rect x="80" y="120" width="10" height="20" fill="black" />
+  <rect x="80" y="150" width="10" height="30" fill="white" />
+  <rect x="80" y="190" width="10" height="40" fill="black" />
+
+  <!-- Headline -->
+  <text
+    x="300"
+    y="360"
+    font-family="Arial, sans-serif"
+    font-size="20"
+    fill="white"
+    text-anchor="middle"
+  >
+    "Welcome to BlogVerse"
+  </text>
+</svg>

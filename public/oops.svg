@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <!-- Background -->
+  <rect width="600" height="400" fill="#f0f4f8"/>
+
+  <!-- OOP Pillars -->
+  <rect x="50" y="50" width="500" height="300" fill="#ffffff" stroke="#2c3e50" stroke-width="2" rx="10"/>
+  
+  <!-- Title -->
+  <text x="300" y="80" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#2c3e50">
+    Object-Oriented Programming
+  </text>
+
+  <!-- OOP Concepts -->
+  <g transform="translate(100, 120)">
+    <!-- Encapsulation -->
+    <rect x="0" y="0" width="100" height="80" fill="#3498db" rx="5" opacity="0.8"/>
+    <text x="50" y="40" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" font-weight="bold">
+      Encapsulation
+    </text>
+
+    <!-- Inheritance -->
+    <rect x="150" y="0" width="100" height="80" fill="#2ecc71" rx="5" opacity="0.8"/>
+    <text x="200" y="40" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" font-weight="bold">
+      Inheritance
+    </text>
+
+    <!-- Polymorphism -->
+    <rect x="300" y="0" width="100" height="80" fill="#e74c3c" rx="5" opacity="0.8"/>
+    <text x="350" y="40" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="white" font-weight="bold">
+      Polymorphism
+    </text>
+  </g>
+
+  <!-- Connecting Lines -->
+  <g stroke="#7f8c8d" stroke-dasharray="5,5">
+    <line x1="150" y1="200" x2="150" y2="180" stroke-width="2"/>
+    <line x1="300" y1="200" x2="300" y2="180" stroke-width="2"/>
+    <line x1="450" y1="200" x2="450" y2="180" stroke-width="2"/>
+  </g>
+
+  <!-- Class and Object Representation -->
+  <g transform="translate(100, 250)">
+    <rect x="0" y="0" width="400" height="100" fill="#ecf0f1" stroke="#95a5a6" stroke-width="2" rx="5"/>
+    <text x="200" y="40" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#2c3e50">
+      Class: Blueprint of Objects
+    </text>
+    <text x="200" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#7f8c8d">
+      Object: Instance of a Class
+    </text>
+  </g>
+</svg>
