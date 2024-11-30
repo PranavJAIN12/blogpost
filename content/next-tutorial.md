@@ -1,15 +1,15 @@
 ---
-
+id: 1
 title: Next Tutorial  
 description: This is a Next.js tutorial for learning the basics and advanced features of Next.js.  
 slug: next-tutorial  
 date: 29-11-2024  
 author: Pranav Jain  
-image: abs.img  
+image: /nextjs.jpg
 
 ---
 
-# Introduction  
+
 
 Welcome to the **Next.js Tutorial**, a step-by-step guide to mastering Next.js! Whether you're a beginner or an experienced developer looking to dive deeper into server-side rendering, routing, and more, this tutorial has you covered.
 

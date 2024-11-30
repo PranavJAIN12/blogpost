@@ -1,38 +1,68 @@
-export default function Page({ params }) {
-    const blog = {
-      id: 1,
-      title: "Understanding React Hooks",
-      description: "A deep dive into the world of React Hooks and how they revolutionize state management.",
-      slug: "understanding-react-hooks",
-      date: "2024-01-15",
-      author: "Sarah Johnson",
-      image: "/placeholder-image.jpg",
-      content:
-        "<p>React Hooks simplify state management and side-effects in functional components. Learn how to use them effectively!</p>",
-    };
+import fs from "fs";
+import matter from "gray-matter";
+import { notFound } from "next/navigation";
+import rehypeDocument from 'rehype-document'
+import rehypeFormat from 'rehype-format'
+import rehypeStringify from 'rehype-stringify'
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+import {unified} from 'unified'
+import rehypePrettyCode from "rehype-pretty-code";
+import { transformerCopyButton } from '@rehype-pretty/transformers'
+
+export default async function Page({ params }) {
+
   
-    return (
-      <div className="max-w-4xl mx-auto p-6">
-        {/* Title */}
-        <h1 className="text-4xl font-extrabold mb-6 ">{blog.title}</h1>
-  
-        {/* Description */}
-        <p className="text-xl mb-4 border-l-4 border-gray-300 pl-4 italic ">
-          {blog.description}
-        </p>
-  
-        {/* Author and Date */}
-        <div className="flex items-center mb-6 gap-4">
-          <h2 className="text-lg font-medium text-gray-500">By {blog.author}</h2>
-          <p className="text-md text-gray-500">{blog.date}</p>
-        </div>
-  
-        {/* Blog Content */}
-        <div
-          dangerouslySetInnerHTML={{ __html: blog.content }}
-          className="prose prose-lgleading-relaxed"
-        ></div>
-      </div>
-    );
+  const filePath = `content/${params.slug}.md`
+
+  if(!fs.existsSync(filePath)){
+    console.log("file not found")
+    console.log(params.slug)
+    notFound()
+    return;
   }
-  
+  const fileContent = fs.readFileSync(filePath, "utf-8");
+  const { content, data } = matter(fileContent);
+
+  const processor =  unified()
+  .use(remarkParse)
+  .use(remarkRehype)
+  .use(rehypeDocument, {title: '👋🌍'})
+  .use(rehypeFormat)
+  .use(rehypeStringify)
+  .use(rehypePrettyCode, {
+    transformers: [
+      transformerCopyButton({
+        visibility: 'always',
+        feedbackDuration: 3_000,
+      }),
+    ],
+    theme:'github-dark'
+  })
+
+  const htmlContent = (await processor.process(content)).toString()
+
+  return (
+    <div className="max-w-4xl mx-auto p-6">
+      {/* Title */}
+      <h1 className="text-4xl font-extrabold mb-6">{data.title}</h1>
+
+      {/* Description */}
+      <p className="text-xl mb-4 border-l-4 border-gray-300 pl-4 italic">
+        {data.description}
+      </p>
+
+      {/* Author and Date */}
+      <div className="flex items-center mb-6 gap-4">
+        <h2 className="text-lg font-medium text-gray-500">By {data.author}</h2>
+        <p className="text-md text-gray-500">{data.date}</p>
+      </div>
+
+      {/* Blog Content */}
+      <div
+        dangerouslySetInnerHTML={{ __html: htmlContent }}
+        className="prose prose-lg dark:prose-invert leading-relaxed"
+      ></div>
+    </div>
+  );
+}

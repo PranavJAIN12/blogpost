@@ -1,36 +1,47 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, User, ArrowRight } from 'lucide-react';
+import fs from 'fs'
+// import { dir } from 'console';
+import matter from 'gray-matter';
 
-const blogPosts = [
-  {
-    id: 1,
-    title: "Understanding React Hooks",
-    description: "A deep dive into the world of React Hooks and how they revolutionize state management.",
-    slug: "understanding-react-hooks",
-    date: "2024-01-15",
-    author: "Sarah Johnson",
-    image: "/placeholder-image.jpg"
-  },
-  {
-    id: 2,
-    title: "The Future of Web Development",
-    description: "Exploring emerging technologies and trends shaping the web development landscape.",
-    slug: "future-of-web-development",
-    date: "2024-02-20",
-    author: "Michael Chen",
-    image: "/placeholder-image.jpg"
-  },
-  {
-    id: 3,
-    title: "Mastering CSS Grid",
-    description: "Comprehensive guide to creating complex layouts with CSS Grid and Flexbox.",
-    slug: "mastering-css-grid",
-    date: "2024-03-10",
-    author: "Emma Rodriguez",
-    image: "/placeholder-image.jpg"
-  }
-];
+const dirContent = fs.readdirSync("content", "utf-8")
+
+const blogs = dirContent.map(file=>{
+    const fileContent = fs.readFileSync(`content/${file}`, "utf-8")
+    const {data} = matter(fileContent)
+    return data
+})
+
+// const blogPosts = [
+//   {
+//     id: 1,
+//     title: "Understanding React Hooks",
+//     description: "A deep dive into the world of React Hooks and how they revolutionize state management.",
+//     slug: "understanding-react-hooks",
+//     date: "2024-01-15",
+//     author: "Sarah Johnson",
+//     image: "/placeholder-image.jpg"
+//   },
+//   {
+//     id: 2,
+//     title: "The Future of Web Development",
+//     description: "Exploring emerging technologies and trends shaping the web development landscape.",
+//     slug: "future-of-web-development",
+//     date: "2024-02-20",
+//     author: "Michael Chen",
+//     image: "/placeholder-image.jpg"
+//   },
+//   {
+//     id: 3,
+//     title: "Mastering CSS Grid",
+//     description: "Comprehensive guide to creating complex layouts with CSS Grid and Flexbox.",
+//     slug: "mastering-css-grid",
+//     date: "2024-03-10",
+//     author: "Emma Rodriguez",
+//     image: "/placeholder-image.jpg"
+//   }
+// ];
 
 export default function BlogPage() {
   return (
@@ -40,10 +51,10 @@ export default function BlogPage() {
       </h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {blogPosts.map((post) => (
+        {blogs.map((post) => (
           <div 
             key={post.id} 
-            className="bg-card text-card-foreground border border-border rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
+            className="bg-card  border border-border rounded-xl overflow-hidden transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
           >
             <div className="relative w-full h-48">
               <Image 
@@ -60,7 +71,7 @@ export default function BlogPage() {
                 {post.title}
               </h2>
               
-              <p className="text-muted-foreground mb-4 line-clamp-3">
+              <p className=" mb-4 line-clamp-3">
                 {post.description}
               </p>
               
@@ -88,7 +99,7 @@ export default function BlogPage() {
             </div>
           </div>
         ))}
-      </div>
+      </div>  
     </div>
   );
 }
