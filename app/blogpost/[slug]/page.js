@@ -1,4 +1,5 @@
 import fs from "fs";
+import path from "path";
 import matter from "gray-matter";
 import { notFound } from "next/navigation";
 import rehypeDocument from 'rehype-document'
@@ -13,10 +14,12 @@ import { transformerCopyButton } from '@rehype-pretty/transformers'
 export default async function Page({ params }) {
 
   
-  const filePath = `public/content/${params.slug}.md`
+  // const filePath = `public/content/${params.slug}.md`
+  const filePath = path.join(process.cwd(), 'public', 'content', `${params.slug}.md`);
 
   if(!fs.existsSync(filePath)){
     console.log("file not found")
+    // alert("not found")
     console.log(params.slug)
     notFound()
     return;
