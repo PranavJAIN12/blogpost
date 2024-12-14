@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -13,6 +14,7 @@ import {
 import Link from 'next/link';
 
 const HomePage = () => {
+
   const features = [
     {
       icon: <Code className="w-10 h-10 text-primary" />,

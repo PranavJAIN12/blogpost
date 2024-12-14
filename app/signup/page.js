@@ -17,21 +17,27 @@ import Link from 'next/link'
 const Signup = () => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [pass, setPass] = useState("")
 
-  const handlesignup = async () => {
+  const handlesignup = async (e) => {
+    e.preventDefault()
     console.log("btn clicked")
     try {
-      const { user, error } = await supabase.auth.signUp({
-        email,
-        password,
-      })
-      if (error) throw error
-      console.log("User signed up:", user)
-     
-      
+      const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: pass,
+        options: {
+          data: { full_name: name },
+        },
+      });
+      if (error) {
+        console.log(`Error: ${error.message}`);
+      } else {
+        console.log("Check your email for the verification link.");
+        navigate("/login");
+      }
     } catch (error) {
-      console.error("Error signing up:", error.message)
+      console.log("Unexpected error occurred. Please try again later.");
     }
   }
 
@@ -71,8 +77,8 @@ const Signup = () => {
                   id="password"
                   type="password"
                   placeholder="Enter password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={pass}
+                  onChange={(e) => setPass(e.target.value)}
                 />
               </div>
             </div>
