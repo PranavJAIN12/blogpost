@@ -57,8 +57,8 @@ const Navbar = () => {
   
       {/* Right Section */}
       <div className="hidden md:flex items-center space-x-4 ml-auto">
-        <Button variant="outline">Login</Button>
-        <Button variant="outline">Sign Up</Button>
+        <Button variant="outline"><Link href={'/login'}>Login</Link></Button>
+        <Button variant="outline"><Link href={'/signup'}>Sign Up</Link></Button>
         <ModeToggle />
       </div>
   
