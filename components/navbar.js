@@ -104,7 +104,7 @@ const Navbar = () => {
         {loggedIn?(
            <div className="hidden md:flex items-center space-x-4 ml-auto">
            <span className="font-medium">Welcome, {username}</span>
-           <Button variant="outline" onClick={handleLogout}>
+           <Button variant="outline" className="mr-4" onClick={handleLogout}>
           Logout
         </Button>
           
@@ -118,9 +118,9 @@ const Navbar = () => {
         <Button variant="outline">
           <Link href={"/signup"}>Sign Up</Link>
         </Button>
-        <ModeToggle />
       </div>
         )}
+        <ModeToggle/>
        
 
         {/* Mobile Hamburger Menu */}
@@ -160,12 +160,26 @@ const Navbar = () => {
                     </Link>
                   </div>
                   <div className="mt-4">
-                    <Button variant="outline" size="sm" className="mx-3">
-                      Login
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      Sign Up
-                    </Button>
+                  {loggedIn?(
+           <div className="hidden md:flex items-center space-x-4 ml-auto">
+           <span className="font-medium">Welcome, {username}</span>
+           <Button variant="outline" onClick={handleLogout}>
+          Logout
+        </Button>
+          
+         </div>
+        ):(
+             
+        <div className="hidden md:flex items-center space-x-4 ml-auto">
+        <Button variant="outline">
+          <Link href={"/login"}>Login</Link>
+        </Button>
+        <Button variant="outline">
+          <Link href={"/signup"}>Sign Up</Link>
+        </Button>
+        <ModeToggle />
+      </div>
+        )}
                     <ModeToggle />
                   </div>
                 </SheetDescription>
