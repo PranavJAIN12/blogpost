@@ -29,13 +29,22 @@ async function getLikes() {
   }, {});
 }
 
+
+
+
+
+
+
+
 export default async function BlogPage() {
+  
   const likes = await getLikes();
 
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-12">
-        Latest Blog Posts
+        Latest Blog Posts 
+
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

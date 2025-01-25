@@ -1,3 +1,4 @@
+
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
@@ -10,6 +11,7 @@ import remarkRehype from 'remark-rehype'
 import {unified} from 'unified'
 import rehypePrettyCode from "rehype-pretty-code";
 import { transformerCopyButton } from '@rehype-pretty/transformers'
+import { Button } from "@/components/ui/button";
 
 export default async function Page({ params }) {
 
@@ -44,11 +46,14 @@ export default async function Page({ params }) {
   })
 
   const htmlContent = (await processor.process(content)).toString()
+  
+ 
 
   return (
     <div className="max-w-4xl mx-auto p-6">
       {/* Title */}
       <h1 className="text-4xl font-extrabold mb-6">{data.title}</h1>
+      
 
       {/* Description */}
       <p className="text-xl mb-4 border-l-4 border-gray-300 pl-4 italic">

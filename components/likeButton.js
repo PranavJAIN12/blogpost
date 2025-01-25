@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from "react";
 import { Heart } from "lucide-react";
@@ -7,6 +7,7 @@ import { supabase } from "@/app/client";
 export default function LikeButton({ slug, initialLikes }) {
   const [likeCount, setLikeCount] = useState(initialLikes);
   const [isLiking, setIsLiking] = useState(false);
+ 
 
   const handleLike = async () => {
     if (isLiking) return; // Prevent multiple clicks
@@ -35,6 +36,7 @@ export default function LikeButton({ slug, initialLikes }) {
       setIsLiking(false);
     }
   };
+  
 
   return (
     <button
