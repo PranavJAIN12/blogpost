@@ -1,7 +1,7 @@
 ---
 id: 5
-title: nextjs-unique features
-description: Unlocking Next.js: Unique Features for Modern Web Development
+title: nextjs-unique-features
+description: "Unlocking Next.js: Unique Features for Modern Web Development"
 slug: nextjs-unique-features
 date: 17/04/2025
 author: Pranav Jain
